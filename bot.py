@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, executor, types
-from rate import rate_v
+from rate import get_rate
 import logging
 
 
@@ -19,8 +19,8 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler()
-async def get_rate(message: types.Message):
-    response_rate = rate_v(message.text)
+async def result(message: types.Message):
+    response_rate = f"{get_rate(message.text)} so'm"
     await message.answer(response_rate)
 
 
