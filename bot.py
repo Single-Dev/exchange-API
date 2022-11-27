@@ -1,6 +1,7 @@
+from aiogram import Bot, Dispatcher, executor, types
+from rate import rate_v
 import logging
 
-from aiogram import Bot, Dispatcher, executor, types
 
 API_TOKEN = '5868396915:AAGo1vqT4lC_P6n6q1_9FOKXH8lYHOL-_hE'
 
@@ -18,9 +19,9 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler()
-async def echo(message: types.Message):
-
-    await message.answer(message.text)
+async def get_rate(message: types.Message):
+    response_rate = rate_v(message.text)
+    await message.answer(response_rate)
 
 
 if __name__ == '__main__':
