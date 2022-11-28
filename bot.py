@@ -16,10 +16,9 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start',])
 async def send_welcome(message: types.Message):
-    def link(as_html=True):
-        link_owner = "<a href='https://github.com/bekzodbek2006'>Bekzodbek</a>"
-        return link_owner
-    link_test = link()
+    def link(url: str):
+        return f"<a href='{url}'>itt</a>"
+    link_test = link("https://github.com/bekzodbek2006")
     await message.reply(f"Salom\nMen orqali kursni bilib oling!\nPowered by {link_test}")
 
 @dp.message_handler(commands=['rate_uzs',])
