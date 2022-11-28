@@ -1,11 +1,11 @@
 {
-    "name": "Small Sharp Tool",
+    "name": "Currency exchange Bot",
     "description": "This app does one little thing, and does it well.",
     "keywords": [
         "python",
         "heroku"
     ],
-    "repository": "https://github.com/jane-doe/small-sharp-tool",
+    "repository": "https://github.com/bekzodbek2006/exchange-api",
     "env": {
         "SECRET_TOKEN": {
             "description": "A secret key for verifying the integrity of signed cookies.",
