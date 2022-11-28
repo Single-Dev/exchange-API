@@ -1,5 +1,7 @@
 # [Currency Exchange](https://t.me/Currency_Exchange1_robot)
 
+## Siz ham buni heroku joylang
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
   
 ### Currency Exchange APIs
 API | Description | Auth | HTTPS |
