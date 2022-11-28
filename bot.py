@@ -2,7 +2,14 @@ from aiogram.utils.deep_linking import decode_payload
 from aiogram import Bot, Dispatcher, executor, types
 from rate import get_rate
 import logging
+import json
+import pathlib
+import requests
 
+with open("app.json", "r") as f:
+    config = json.load(f)
+
+print(config['name'])
 
 API_TOKEN = '5868396915:AAGo1vqT4lC_P6n6q1_9FOKXH8lYHOL-_hE'
 
