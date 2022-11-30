@@ -1,6 +1,7 @@
 from aiogram.utils.deep_linking import decode_payload
 from aiogram import Bot, Dispatcher, executor, types
 from rate import get_rate
+from aiogram.dispatcher.filters import Filter
 import logging
 import json
 import pathlib
@@ -22,13 +23,32 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
+admins = set()
+users = set()
+
 
 @dp.message_handler(commands=['start',])
 async def send_welcome(message: types.Message):
-    def link(url: str):
-        return f"<a href='{url}'>itt</a>"
-    link_test = link("https://github.com/bekzodbek2006")
-    await message.reply(f"Salom\nMen orqali kursni bilib oling!\nPowered by {link_test}")
+    users.add(message.from_user.username)
+    await message.reply(f"Salom\nMen orqali kursni bilib oling!\nPowered Bekzodbek")
+
+
+class IsAdmin(Filter):
+    key = "is_admin"
+    async def check(self, message: types.Message):
+        return message.from_user.id in admins
+
+@dp.message_handler(IsAdmin(), commands=['users'])
+async def only_for_admins(message: types.Message):
+        user_result = f'{len(users)}ta users\n{users}'
+        await message.answer(user_result)
+
+
+@dp.message_handler(commands="make")
+async def add_to_admins(message: types.Message):
+    admins.add(message.from_user.id)
+    await message.reply(f"New admins list: {admins}")
+
 
 @dp.message_handler(commands=['rate_uzs',])
 async def get_conversion_rate(message: types.Message):
@@ -36,9 +56,9 @@ async def get_conversion_rate(message: types.Message):
     response_reply = f"1 USD kursi {r_sum} UZS\n10 USD: {r_sum * 10} UZS\n100 USD: {r_sum * 100} UZS"
     await message.reply(response_reply)
 
-@dp.message_handler()
-async def result(message: types.Message):
-    await message.answer("response_rate")
+# @dp.message_handler()
+# async def result(message: types.Message):
+#     await message.answer("response_rate")
 
 @dp.message_handler(content_types='photo')
 @dp.message_handler(content_types=types.ContentTypes.PHOTO)
