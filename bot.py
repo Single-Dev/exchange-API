@@ -36,11 +36,9 @@ async def get_conversion_rate(message: types.Message):
     response_reply = f"1 USD kursi {r_sum} UZS\n10 USD: {r_sum * 10} UZS\n100 USD: {r_sum * 100} UZS"
     await message.reply(response_reply)
 
-if get_conversion_rate:
-    @dp.message_handler()
-    async def result(message: types.Message):
-
-        await message.answer("response_rate")
+@dp.message_handler()
+async def result(message="cat"):
+    await message.answer("response_rate")
 
 
 if __name__ == '__main__':
