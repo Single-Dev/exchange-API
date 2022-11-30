@@ -10,11 +10,9 @@ import requests
 with open("app.json", "r") as f:
     config = json.load(f)
 
-generator = config['env']['SECRET_TOKEN']['generator']
 
-print(generator)
-
-API_TOKEN = '5868396915:AAGo1vqT4lC_P6n6q1_9FOKXH8lYHOL-_hE'
+# API_TOKEN = '5868396915:AAGo1vqT4lC_P6n6q1_9FOKXH8lYHOL-_hE'
+API_TOKEN = config['env']['SECRET_TOKEN']['token']
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

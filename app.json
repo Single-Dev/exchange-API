@@ -9,7 +9,7 @@
     "env": {
         "SECRET_TOKEN": {
             "description": "A secret key for verifying the integrity of signed cookies.",
-            "token": "Bot token here"
+            "token": "5868396915:AAGo1vqT4lC_P6n6q1_9FOKXH8lYHOL-_hE"
         }
     }
 }
