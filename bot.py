@@ -37,9 +37,13 @@ async def get_conversion_rate(message: types.Message):
     await message.reply(response_reply)
 
 @dp.message_handler()
-async def result(message="cat"):
+async def result(message: types.Message):
     await message.answer("response_rate")
 
+@dp.message_handler(content_types='photo')
+@dp.message_handler(content_types=types.ContentTypes.PHOTO)
+async def content_type_example(msg: types.Message):
+    await msg.answer('Bu Rasmmi?')
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)
