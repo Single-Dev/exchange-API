@@ -7,5 +7,3 @@ def get_rate(currency_1):
     response = requests.get(url)
     jsondata = response.json()["conversion_rate"]
     return jsondata
-
-# print(rate("USD", "UZS"))
