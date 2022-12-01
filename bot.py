@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
-admins = set({'5092483247'})
+admins = set()
 users = set()
 
 
