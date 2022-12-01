@@ -1,4 +1,3 @@
-from aiogram.utils.deep_linking import decode_payload
 from aiogram import Bot, Dispatcher, executor, types
 from rate import get_rate
 from aiogram.dispatcher.filters import Filter
@@ -19,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
-admins = set()
+admins = set({'5092483247'})
 users = set()
 
 
@@ -41,9 +40,9 @@ async def only_for_admins(message: types.Message):
         await message.answer(user_result)
 
 
-@dp.message_handler(commands="make")
+@dp.message_handler(commands="addAdmin")
 async def add_to_admins(message: types.Message):
-    admins.add(message.from_user.id)
+    admins.add(message.text)
     await message.reply(f"New admins list: {admins}")
 
 
