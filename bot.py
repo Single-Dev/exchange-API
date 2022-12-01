@@ -40,9 +40,11 @@ async def only_for_admins(message: types.Message):
         await message.answer(user_result)
 
 
-@dp.message_handler(commands="addAdmin")
+@dp.message_handler(commands="admin")
 async def add_to_admins(message: types.Message):
-    admins.add(message.text)
+    if not message.text.lower() == '/admin': 
+        admins.add(message.text.replace('/admin',''))
+
     await message.reply(f"New admins list: {admins}")
 
 
