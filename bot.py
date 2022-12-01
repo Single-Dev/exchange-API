@@ -10,8 +10,6 @@ import requests
 with open("app.json", "r") as f:
     config = json.load(f)
 
-
-# API_TOKEN = '5868396915:AAGo1vqT4lC_P6n6q1_9FOKXH8lYHOL-_hE'
 API_TOKEN = config['env']['SECRET_TOKEN']['token']
 
 # Configure logging
@@ -38,7 +36,8 @@ class IsAdmin(Filter):
 
 @dp.message_handler(IsAdmin(), commands=['users'])
 async def only_for_admins(message: types.Message):
-        user_result = f'{len(users)}ta users\n{users}'
+        users_list = users
+        user_result = f'{len(users)}ta users\n{users_list}'
         await message.answer(user_result)
 
 
